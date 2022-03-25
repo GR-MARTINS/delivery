@@ -1,24 +1,25 @@
 {% extends "base.html" %}  
 
-{% import "macros/list_cards.html" as list_cards %}
-
 {% block top %}
 <section class="hero is-primary">
   <div class="hero-body">
     <div class="container">
     <p class="title">
-      {{ site_name }}
+      Sobre
     </p>
     <p class="subtitle">
-      {{ site_subtitle }}
+      Foods Delivery
     </p>
   </div>
   </div>
 </section>
-{% endblock top %}
+{% endblock %}
   
-{% block main %}  
-<div class="columns">    
-  {{ list_cards.cards([1, 2, 3, 4]) }}
-</div>
-{% endblock main %}
+{% block main %}      
+<p>
+	A melhor opção quando a fome bater!
+</p>
+{% endblock %}
+
+
+
