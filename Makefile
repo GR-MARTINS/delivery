@@ -16,3 +16,12 @@ install:
 
 test:
 	pytest tests/ -v --cov=delivery
+
+format:
+	isort **/*.py
+	black -l 79 **/*.py
+
+run:
+	set FLASK_APP=delivery/app.py
+	set FLASK_ENV=development 
+	flask run
