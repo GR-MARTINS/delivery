@@ -20,3 +20,8 @@ def about():
 @bp.route("/restaurantes")
 def restaurants():
     return render_template("restaurants.html")
+
+
+@bp.route("/admin")
+def admin():
+    return render_template("restaurants.html")

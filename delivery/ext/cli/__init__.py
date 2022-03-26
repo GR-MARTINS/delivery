@@ -1,6 +1,6 @@
 import click
 from delivery.ext.db import db
-from delivery.ext.site import models
+from delivery.ext.db import models
 
 
 def init_app(app):
@@ -37,7 +37,13 @@ def init_app(app):
         click.echo("lista de pedidos")
 
     @app.cli.command()
-    def listar_usuarios():
+    def list_users():
         """Este comando carrega a lista de pedidos"""
-        str(models.User.query.all())
-        click.echo(str(models.User.query.all()))
+        users = models.User.query.all()
+        for user in users:
+            click.echo({
+                "id": str(user.id),
+                "email": str(user.email),
+                "passwd": str(user.passwd),
+                "admin": str(user.admin)
+            })
