@@ -16,9 +16,20 @@
   </div>
 </section>
 {% endblock top %}
-  
+    <div class="alert alert-warning">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  </div>
 {% block main %}  
 <div class="columns">    
   {{ list_cards.cards([1, 2, 3, 4]) }}
 </div>
 {% endblock main %}
+

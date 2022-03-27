@@ -1,0 +1,31 @@
+{% extends "base.html" %}  
+
+{% block top %}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+    <p class="title">
+      Bem vindo!
+    </p>
+    <p class="subtitle">
+      Foods Delivery, o melhor site de delivery do mundo!
+    </p>
+  </div>
+  </div>
+</section>
+{% endblock %}
+  
+{% block main %} 
+
+<form class='login-form' action='{{url_for("site.login")}}' method='POST' enctype='multipart/form-data'>
+  {{ form.csrf_token }}
+  {{ form.email.label }}</br>
+  {{ form.email(size=60) }}</br>
+  {{ form.passwd.label }}</br>
+  {{ form.passwd(size=60) }}</br>
+  <input type="submit" value="login"></br>
+</form>
+{% endblock %}
+
+
+

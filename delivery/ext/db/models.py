@@ -1,17 +1,40 @@
 # -*- encoding: utf-8 -*-
-
+from delivery.ext.auth import lm
 from delivery.ext.db import db
 
 
 class User(db.Model):
     __tablename__ = "user"
+
     id = db.Column("id", db.Integer, primary_key=True)
     email = db.Column("email", db.Unicode, unique=True)
     passwd = db.Column("passwd", db.Unicode)
+    foto = db.Column("foto", db.Unicode)
     admin = db.Column("admin", db.Boolean)
 
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
+    def __init__(self, email, passwd, foto, admin):
+        self.email = email
+        self.passwd = passwd
+        self.foto = foto
+        self.admin = admin
+
     def __repr__(self):
-        return self.email
+        return "<User %r>" % self.email
 
 
 class Category(db.Model):
@@ -30,7 +53,7 @@ class Store(db.Model):
     name = db.Column("name", db.Unicode)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
     category_id = db.Column(
-        "category_id", db.Integer, db.ForeignKey("category.id")
+        "category_id", db.Unicode, db.ForeignKey("category.id")
     )
     active = db.Column("active", db.Boolean)
 
@@ -64,7 +87,7 @@ class Order(db.Model):
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
     store_id = db.Column("store_id", db.Integer, db.ForeignKey("store.id"))
     address_id = db.Column(
-        "address_id", db.Integer, db.ForeignKey("address.id")
+        "address_id", db.Unicode, db.ForeignKey("address.id")
     )
 
     user = db.relationship("User", foreign_keys=user_id)
@@ -79,7 +102,7 @@ class OrderItems(db.Model):
     __tablename__ = "order_items"
     order_id = db.Column("order_id", db.Integer, db.ForeignKey("order.id"))
     items_id = db.Column("items_id", db.Integer, db.ForeignKey("items.id"))
-    quant = db.Column("quant", db.Integer)
+    quant = db.Column("quant", db.Unicode)
     id = db.Column("id", db.Integer, primary_key=True)
 
     order = db.relationship("Order", foreign_keys=order_id)

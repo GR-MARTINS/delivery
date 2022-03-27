@@ -68,10 +68,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
+              <a class="button is-primary" href="{{ url_for('site.signup') }}">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">
+              <a class="button is-light" href="{{ url_for('site.login') }}">
                 Log in
               </a>
             </div>
@@ -79,9 +79,24 @@
         </div>
       </div>
     </nav>
+
+    <div class="alert alert-warning">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </div>
+    
     {% endblock nav %}
 
-    {% block top %} {% endblock top %}
+    {% block top %}
+    
+    {% endblock top %}
 
     <section class="section">
       <div class="container">

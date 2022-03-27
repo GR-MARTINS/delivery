@@ -9,7 +9,7 @@ class UserAdmin(ModelView):
     """Interface admin de user"""
 
 #   colunas que serão exibidas na interface administrativa
-    column_list = ["admin", "email"]
+    column_list = ["admin", "email", "foto"]
 
 #   modifica o nome de exibição da coluna na interface administrativa
     column_labels = {"email": "User login"}

@@ -3,11 +3,13 @@ DEBUG = false
 FLASK_ADMIN_SWATCH = 'cerulean'
 EXTENSIONS = [
     "delivery.ext.db:init_app",
-    "delivery.ext.auth:init_app",
+    "delivery.ext.migrate:init_app",
     "delivery.ext.admin:init_app",
+    "delivery.ext.auth:init_app",
     "delivery.ext.cli:init_app",
     "delivery.ext.site:init_app",
 ]
+UPLOAD_FOLDER = "uploads"
 
 [development]
 DEBUG = true
@@ -19,9 +21,10 @@ DEBUG_TB_PROFILER_ENABLED = true
 DEBUG_TB_INTERCEPT_REDIRECTS = false
 EXTENSIONS = [
     "delivery.ext.db:init_app",
-    "delivery.ext.auth:init_app",
+    "delivery.ext.migrate:init_app",
     "delivery.ext.admin:init_app",
     "delivery.ext.cli:init_app",
+    "delivery.ext.auth:init_app",
     "delivery.ext.toolbar:init_app",
     "delivery.ext.site:init_app",
 ]
