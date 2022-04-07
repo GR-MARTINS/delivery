@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Foods Delivery</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     {% endblock head %}
 
     {% block extra_css %} {% endblock extra_css %}
@@ -15,83 +15,43 @@
   <body>  
 
   {% block nav %}  
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="{{ url_for('site.about') }}">
-          <strong>Foods Delivery</strong>
-        </a>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/">
-            Home
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for( 'site.index') }}">Home
+            <span class="visually-hidden">(current)</span>
           </a>
-
-          <a class="navbar-item" href="{{ url_for('site.restaurants') }}">
-            Restaurantes
-          </a>
-
-          <a class="navbar-item" href="{{ url_for('site.about') }}">
-            Sobre
-          </a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                Pizza
-              </a>
-              <a class="navbar-item">
-                Pastel
-              </a>
-              <a class="navbar-item">
-                Hamburger
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for( 'site.restaurants') }}">Restaurantes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for( 'site.about') }}">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
           </div>
-        </div>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-link" href="{{ url_for('site.signup') }}">Primary</button>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" href="{{ url_for('site.login') }}">Login</button>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary" href="{{ url_for('site.signup') }}">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light" href="{{ url_for('site.login') }}">
-                Log in
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="alert alert-warning">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          <ul class=flashes>
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
-      {% endwith %}
     </div>
-    
+  </div>
+</nav>
     {% endblock nav %}
 
     {% block top %}
