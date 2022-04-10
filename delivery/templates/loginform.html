@@ -1,30 +1,40 @@
 {% extends "base.html" %}  
 
 {% block top %}
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-    <p class="title">
-      Bem vindo!
-    </p>
-    <p class="subtitle">
-      Foods Delivery, o melhor site de delivery do mundo!
-    </p>
-  </div>
-  </div>
-</section>
+
 {% endblock %}
   
 {% block main %} 
 
-<form class='login-form' action='{{url_for("site.login")}}' method='POST' enctype='multipart/form-data'>
-  {{ form.csrf_token }}
-  {{ form.email.label }}</br>
-  {{ form.email(class="form-control") }}</br>
-  {{ form.passwd.label }}</br>
-  {{ form.passwd(class="form-control") }}</br>
-  <input type="submit" value="login"></br>
-</form>
+<div class="jumbotron">
+  <form class='form-horizontal' action='{{url_for("site.login")}}' method='POST' enctype='multipart/form-data'>
+    {{ form.csrf_token }}
+    <fieldset>
+      <legend> Login</legend>
+      <div class="form-group">
+        {{ form.email.label(class="col-lg-2 control-label") }}
+        <div class="col-lg-10">
+          {{ form.email(class="form-control", placeholder="Email") }}
+        </div>
+      </div>
+      
+      <div class="form-group">
+        {{ form.passwd.label(class="col-lg-2 control-label") }}
+        <div class="col-lg-10">
+          {{ form.passwd(class="form-control", placeholder="Password") }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>  
+</div> 
 {% endblock %}
 
 
