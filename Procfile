@@ -1,1 +1,1 @@
-web: waitress-serve --listen=*:8000 bookmarks.runner:application
+web: gunicorn delivery.runner:application
