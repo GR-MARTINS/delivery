@@ -30,5 +30,18 @@ EXTENSIONS = [
 ]
 
 [production]
-SQLALCHEMY_TRACK_MODIFICATIONS = false
+SECRET_KEY = '6\xd9\x88|b\tKY\xff\xa4\xf6\xb2\xe7=\xf45'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///delivery.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
+DEBUG_TB_PROFILER_ENABLED = true
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+EXTENSIONS = [
+    "delivery.ext.db:init_app",
+    "delivery.ext.migrate:init_app",
+    "delivery.ext.admin:init_app",
+    "delivery.ext.cli:init_app",
+    "delivery.ext.auth:init_app",
+    "delivery.ext.toolbar:init_app",
+    "delivery.ext.site:init_app",
+]
