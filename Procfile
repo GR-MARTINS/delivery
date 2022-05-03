@@ -1,1 +1,1 @@
-web: gunicorn delivery.runner:application
+web: gunicorn bookmarks.runner:application
